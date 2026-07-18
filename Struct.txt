@@ -1,11 +1,13 @@
 Project Structure -> 
 
 (Folder) FinalProject 
-   --> project.py 
-   --> test_project.py 
-   --> requirements.txt
-   --> README.md 
-   --> Struct.txt (this file) 
-   --> pytest.py 
-   --> (Folder) PresentationFinal 
-           --> presentation.ppt
+   ---> project.py - Where the whole menu system, presets, custom simulation, and orbital simulator code is located 
+   ---> test_project.py - Like week 5's pytest exercises where we need to test the functions inside of the program
+   ---> requirements.txt - what python packages you need installed 
+   ---> README.md - Description of everything
+   ---> start.bat - It opens project.py , and keeps the console open afterwards so that you can read any errors that might occur
+   ---> Struct.txt - A copy of this same Project Structure definition
+   ---> pytest.py - If you have pytest installed, you do not need to use this, this is if your pytest is broken like mine.
+   ---> (Folder) PresentationFinal 
+          ------ > presentation.rtf - this is my presentation for cs50 final project
+          
