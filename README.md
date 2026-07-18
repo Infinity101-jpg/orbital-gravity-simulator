@@ -1,7 +1,7 @@
 # GraviSim: 2D Orbital Gravity Simulator
 #### Video Demo:  [https://www.youtube.com/watch?v=6axK1b55lp0](https://www.youtube.com/watch?v=6axK1b55lp0)
 
-Resources I used to learn eveything: Tony Gaddis' Starting out with Python, 5th Ed., RealPython.com
+This Project is Licenced under the MIT License.
 
 #### Description:
 
