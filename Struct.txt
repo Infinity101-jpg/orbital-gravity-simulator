@@ -1,0 +1,11 @@
+Project Structure -> 
+
+(Folder) FinalProject 
+   --> project.py 
+   --> test_project.py 
+   --> requirements.txt
+   --> README.md 
+   --> Struct.txt (this file) 
+   --> pytest.py 
+   --> (Folder) PresentationFinal 
+           --> presentation.ppt
