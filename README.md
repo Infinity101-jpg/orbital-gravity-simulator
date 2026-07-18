@@ -89,5 +89,5 @@ Project Structure ->
    ---> Struct.txt - A copy of this same Project Structure definition
    ---> pytest.py - If you have pytest installed, you do not need to use this, this is if your pytest is broken like mine.
    ---> (Folder) PresentationFinal 
-          ------ > presentation.ppt - this is my presentation for cs50 final project
+          ------ > presentation.rtf - this is my presentation for cs50 final project
           
