@@ -8,6 +8,5 @@ Project Structure ->
    ---> start.bat - It opens project.py , and keeps the console open afterwards so that you can read any errors that might occur
    ---> Struct.txt - A copy of this same Project Structure definition
    ---> pytest.py - If you have pytest installed, you do not need to use this, this is if your pytest is broken like mine.
-   ---> (Folder) PresentationFinal 
-          ------ > presentation.html - this is my presentation for cs50 final project
+
           
