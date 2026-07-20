@@ -78,6 +78,9 @@ You can toggle orbital trails using:
     
 
 This adds a color‑gradient trail behind one of the objects.
+#### **Testing**
+
+To test project.py, just run `python pytest.py`, and it will run all of the tests.
 
 ##### 5. Project Structure 
 ```
@@ -90,6 +93,6 @@ Project Structure ->
    ---> README.md - Description of everything
    ---> start.bat - It opens project.py , and keeps the console open afterwards so that you can read any errors that might occur
    ---> Struct.txt - A copy of this same Project Structure definition
-   ---> pytest.py - If you have pytest installed, you do not need to use this, this is if your pytest is broken like mine.
+   ---> pytest.py - This is for testing the program.
    
           
