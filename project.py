@@ -1,6 +1,10 @@
 import tkinter as tk
 import pygame
 import sys
+import os
+
+if __name__ != "__main__":
+    os.environ["SDL_VIDEODRIVER"] = "dummy";
 
 tk_window = None
 PresetName = ''
