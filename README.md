@@ -1,7 +1,9 @@
 # GraviSim: 2D Orbital Gravity Simulator
-Video Demo: [🎥 View Video Demo](https://riaanvanwyk.onrender.com/WebVideo.html)
+Video Demo: [🎥 View Video Demo](https://riaanvanwyk.onrender.com/GravityPresentationVid.html)
 
-Presentation: [📄 View Full Presentation](https://riaanvanwyk.onrender.com/present.html)
+Presentation: [📄 View Full Presentation](https://riaanvanwyk.onrender.com/GravityPresentation.html)
+
+Personal Website: [🌐 Open My Website](https://riaanvanwyk.onrender.com/index.html)
 
 
 #### Description:
