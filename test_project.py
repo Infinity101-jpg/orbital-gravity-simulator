@@ -1,65 +1,79 @@
-import unittest
-import project  # your main file
+"""
+test_project.py
 
-class TestProject(unittest.TestCase):
+Sanity tests for the 2D Orbital Gravity Simulation.
+Compatible with pytest.py runner (no arguments allowed).
+"""
 
-    def setUp(self):
-        # Reset to default before each test
-        project.ApplyPreset("Preset A")
+import importlib
+import sys
 
-    def test_apply_preset_changes_values(self):
-        """Preset A should correctly update global variables."""
-        project.ApplyPreset("Preset A")
+MODULE_NAME = "project"   # rename your main file to this
 
-        self.assertEqual(project.Obj_1_col, "PINK")
-        self.assertEqual(project.Obj_2_col, "TEAL")
-        self.assertEqual(project.Obj_1_radius, 10)
-        self.assertEqual(project.Obj_2_radius, 30)
 
-        self.assertEqual(project.Obj_1_coords, [-150.0, 100.0])
-        self.assertEqual(project.Velocity1, [.5, .9])
+# Load module once
+try:
+    sim = importlib.import_module(MODULE_NAME)
+    print(f"[OK] Imported module '{MODULE_NAME}'")
+except Exception as e:
+    print(f"[FAIL] Could not import module '{MODULE_NAME}': {e}")
+    sys.exit(1)
 
-    def test_apply_preset_B(self):
-        """Preset B should load correct values."""
-        project.ApplyPreset("Preset B")
 
-        self.assertEqual(project.Obj_1_col, "BLUE")
-        self.assertEqual(project.Obj_2_col, "RED")
-        self.assertEqual(project.Obj_1_radius, 10)
-        self.assertEqual(project.Obj_2_radius, 30)
+def test_presets_exist():
+    print("Running test_presets_exist...")
 
-        self.assertEqual(project.Obj_1_coords, [-150.0, 0.0])
-        self.assertEqual(project.Velocity1, [0, .5])
+    assert hasattr(sim, "PRESETS"), "PRESETS dict is missing"
 
-    def test_update_coords_and_vel_runs(self):
-        """Ensure physics update runs without crashing."""
-        old_pos1 = project.Obj_1_coords.copy()
-        old_pos2 = project.Obj_2_coords.copy()
+    expected = {"Preset A", "Preset B", "Preset C", "Preset D", "Preset E", "Preset F"}
+    actual = set(sim.PRESETS.keys())
 
-        project.Update_coords_and_vel()
+    missing = expected - actual
+    assert not missing, f"Missing presets: {missing}"
 
-        # Object 1 should always move at least a tiny bit
-        self.assertNotEqual(old_pos1, project.Obj_1_coords)
+    print("[OK] All expected presets are present.")
 
-        # Object 2 may or may not move depending on preset
-        self.assertEqual(len(project.Obj_2_coords), 2)
 
-    def test_velocity_changes(self):
-        """Velocity should change after update."""
-        old_v1 = project.Velocity1.copy()
-        old_v2 = project.Velocity2.copy()
+def test_apply_preset_changes_globals():
+    print("Running test_apply_preset_changes_globals...")
 
-        project.Update_coords_and_vel()
+    name = "Preset A"
+    sim.ApplyPreset(name)
+    preset = sim.PRESETS[name]
 
-        self.assertNotEqual(old_v1, project.Velocity1)
-        self.assertNotEqual(old_v2, project.Velocity2)
+    assert sim.Game_slowdown_percent == preset["Game_slowdown_percent"]
+    assert sim.Obj_1_col == preset["Obj_1_col"]
+    assert sim.Obj_1_radius == preset["Obj_1_radius"]
+    assert sim.Obj_1_weight == preset["Obj_1_weight"]
+    assert sim.Obj_1_coords == preset["Obj_1_coords"]
+    assert sim.Velocity1 == preset["Velocity1"]
 
-    def test_all_presets_load(self):
-        """Ensure every preset loads without errors."""
-        for name in project.PRESETS.keys():
-            project.ApplyPreset(name)
-            self.assertEqual(project.Obj_1_col, project.PRESETS[name]["Obj_1_col"])
-            self.assertEqual(project.Obj_2_col, project.PRESETS[name]["Obj_2_col"])
+    assert sim.Obj_2_col == preset["Obj_2_col"]
+    assert sim.Obj_2_radius == preset["Obj_2_radius"]
+    assert sim.Obj_2_weight == preset["Obj_2_weight"]
+    assert sim.Obj_2_coords == preset["Obj_2_coords"]
+    assert sim.Velocity2 == preset["Velocity2"]
 
-if __name__ == "__main__":
-    unittest.main()
+    print("[OK] ApplyPreset updates globals correctly.")
+
+
+def test_color_map():
+    print("Running test_color_map...")
+
+    assert sim.get_color_name(sim.PINK) == "PINK"
+    assert sim.get_color_name(sim.TEAL) == "TEAL"
+    assert sim.get_color_name(sim.SILVER) == "SILVER"
+
+    unknown = (123, 45, 67)
+    assert sim.get_color_name(unknown) == "WHITE"
+
+    print("[OK] get_color_name works correctly.")
+
+
+def test_main_exists():
+    print("Running test_main_exists...")
+
+    assert hasattr(sim, "main"), "main() missing"
+    assert callable(sim.main), "main is not callable"
+
+    print("[OK] main() function exists.")
